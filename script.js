@@ -80,3 +80,6 @@ alert(
 );
 
 }
+function placeOrder(){
+alert("Order Button Working");
+}
