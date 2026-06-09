@@ -1,12 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bipin Kirana Store</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f7f5;
+}
+
+header{
+background:#0ca678;
+color:white;
+padding:20px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.tagline{
+font-size:14px;
+margin-top:5px;
+}
+
+.search{
+padding:15px;
+background:white;
+position:sticky;
+top:82px;
+z-index:999;
+}
+
+.search input{
+width:100%;
+padding:14px;
+border-radius:15px;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+.hero{
+margin:15px;
+background:linear-gradient(135deg,#12b886,#38d9a9);
+padding:25px;
+border-radius:20px;
+color:white;
+text-align:center;
+}
+
+.hero h2{
+margin-bottom:10px;
+}
+
+.section-title{
+padding:15px;
+font-size:20px;
+font-weight:bold;
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+padding:15px;
+}
+
+.category{
+background:white;
+padding:15px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.products{
+padding:15px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+padding:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.card img{
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.brand{
+color:gray;
+font-size:12px;
+margin-top:5px;
+}
+
+.price{
+font-weight:bold;
+color:#0ca678;
+margin:8px 0;
+}
+
+.btn{
+background:#0ca678;
+color:white;
+border:none;
+width:100%;
+padding:10px;
+border-radius:10px;
+font-weight:bold;
+}
+
+.cart-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#0ca678;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+font-weight:bold;
+box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+footer{
+background:#0ca678;
+color:white;
+padding:20px;
+margin-top:30px;
+text-align:center;
+}
+
+</style>
+
 </head>
 <body>
 
+<header>
 <h1>Bipin Kirana Store</h1>
-<p>घर बैठे किराना मंगाइए - Cash on Delivery</p>
+<div class="tagline">
+घर बैठे किराना मंगाइए - Cash on Delivery
+</div>
+</header>
+
+<div class="search">
+<input type="text" placeholder="Search Products...">
+</div>
+
+<div class="hero">
+<h2>Fresh Grocery Delivered</h2>
+<p>Fast Delivery • Best Quality • Cash on Delivery</p>
+</div>
+
+<div class="section-title">
+Categories
+</div>
+
+<div class="categories">
+<div class="category">Atta</div>
+<div class="category">Rice</div>
+<div class="category">Dal</div>
+<div class="category">Oil</div>
+<div class="category">Sugar</div>
+<div class="category">Salt</div>
+<div class="category">Spices</div>
+<div class="category">Tea</div>
+<div class="category">Snacks</div>
+</div>
+
+<div class="section-title">
+Popular Products
+</div>
+
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=500">
+<h4>Ashirvaad Atta</h4>
+<div class="brand">5 Kg Pack</div>
+<div class="price">₹280</div>
+<button class="btn">Add To Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500">
+<h4>India Gate Rice</h4>
+<div class="brand">5 Kg Pack</div>
+<div class="price">₹450</div>
+<button class="btn">Add To Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500">
+<h4>Fortune Oil</h4>
+<div class="brand">1 Litre</div>
+<div class="price">₹170</div>
+<button class="btn">Add To Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=500">
+<h4>Tata Salt</h4>
+<div class="brand">1 Kg</div>
+<div class="price">₹25</div>
+<button class="btn">Add To Cart</button>
+</div>
+
+</div>
+
+<div class="cart-btn">
+🛒 Cart
+</div>
+
+<footer>
+<h3>Bipin Kirana Store</h3>
+<p>📞 Contact Number</p>
+<p>💬 WhatsApp Number</p>
+<p>📍 Store Address</p>
+</footer>
 
 </body>
 </html>
