@@ -97,7 +97,8 @@ let message =
 orderItems + "\n" +
 "Total Amount: ₹" + total + "\n\n" +
 "Payment: Cash on Delivery";
-
+alert(orderItems);
+alert(total);
 alert(message);
 
 /*
