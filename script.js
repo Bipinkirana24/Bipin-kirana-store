@@ -61,3 +61,22 @@ cart = cart.filter(p => p.name !== name);
 
 updateCart();
 }
+function placeOrder(){
+
+const name =
+document.getElementById("custName").value;
+
+const mobile =
+document.getElementById("custMobile").value;
+
+const address =
+document.getElementById("custAddress").value;
+
+alert(
+"Customer: " + name +
+"\nMobile: " + mobile +
+"\nAddress: " + address +
+"\n\nCash On Delivery"
+);
+
+}
