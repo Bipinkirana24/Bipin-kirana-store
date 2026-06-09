@@ -81,5 +81,16 @@ alert(
 
 }
 function placeOrder(){
-alert("Order Button Working");
+
+const name = document.getElementById("custName").value;
+const mobile = document.getElementById("custMobile").value;
+const address = document.getElementById("custAddress").value;
+
+alert(
+"Customer Name: " + name +
+"\nMobile: " + mobile +
+"\nAddress: " + address +
+"\n\nPayment: Cash on Delivery"
+);
+
 }
