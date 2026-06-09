@@ -47,3 +47,17 @@ text += item.name + " x " + item.qty + "\n";
 alert(text || "Cart Empty");
 
 }
+function removeFromCart(name){
+
+const item = cart.find(p => p.name === name);
+
+if(!item) return;
+
+item.qty--;
+
+if(item.qty <= 0){
+cart = cart.filter(p => p.name !== name);
+}
+
+updateCart();
+}
