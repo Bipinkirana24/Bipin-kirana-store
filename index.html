@@ -14,10 +14,9 @@ font-family:Arial,sans-serif;
 }
 body{
 background:#f5f7f5;
-padding-bottom: 80px; /* Cart button ke liye neche space */
+padding-bottom: 80px;
 }
 
-/* Header & Logo Styling */
 header {
 background: #0ca678;
 color: white;
@@ -58,7 +57,6 @@ opacity: 0.9;
 margin-top: 2px;
 }
 
-/* Search Bar */
 .search{
 padding:15px;
 background:white;
@@ -76,46 +74,15 @@ font-size:16px;
 outline: none;
 }
 
-/* Hero Banner */
-.hero{
-margin:15px;
-background:linear-gradient(135deg,#12b886,#38d9a9);
-padding:25px;
-border-radius:20px;
-color:white;
-text-align:center;
-}
-
-.hero h2{
-margin-bottom:10px;
-}
-
 .section-title{
-padding:15px;
-font-size:20px;
-font-weight:bold;
-}
-
-/* Categories */
-.categories{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-padding:15px;
-}
-
-.category{
-background:white;
-padding:15px;
-border-radius:15px;
-text-align:center;
-box-shadow:0 2px 8px rgba(0,0,0,.08);
-font-size: 14px;
+padding: 15px 15px 5px 15px;
+font-size: 22px;
 font-weight: bold;
-color: #333;
+color: #0ca678;
+border-bottom: 2px solid #e6f7f2;
+margin-top: 15px;
 }
 
-/* Products Grid */
 .products{
 padding:15px;
 display:grid;
@@ -125,37 +92,37 @@ gap:12px;
 
 .card{
 background:white;
-border-radius:18px;
-padding:12px;
-box-shadow:0 2px 8px rgba(0,0,0,.08);
+border-radius:15px;
+padding:15px;
+box-shadow:0 2px 8px rgba(0,0,0,.06);
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+border: 1px solid #eaeaea;
 }
 
-.card img{
-width:100%;
-height:120px;
-object-fit:cover;
-border-radius:12px;
+.card h4 {
+font-size: 16px;
+color: #333;
+margin-bottom: 4px;
 }
 
 .brand{
 color:gray;
-font-size:12px;
-margin-top:5px;
+font-size: 13px;
+margin-bottom: 8px;
 }
 
 .price{
 font-weight:bold;
 color:#0ca678;
-margin:8px 0;
+font-size: 18px;
+margin-bottom: 12px;
 }
 
-/* Add To Cart & Stylish Plus-Minus Buttons */
 .btn-container {
 width: 100%;
-height: 40px;
+height: 38px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -167,11 +134,10 @@ color:white;
 border:none;
 width:100%;
 height: 100%;
-border-radius:10px;
+border-radius:8px;
 font-weight:bold;
 cursor: pointer;
-font-size: 14px;
-transition: all 0.2s;
+font-size: 13px;
 }
 
 .btn:active {
@@ -186,7 +152,7 @@ width: 100%;
 height: 100%;
 background: #e6f7f2;
 border: 1px solid #0ca678;
-border-radius: 10px;
+border-radius: 8px;
 overflow: hidden;
 }
 
@@ -199,9 +165,6 @@ font-weight: bold;
 width: 35px;
 height: 100%;
 cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
 }
 
 .qty-btn:active {
@@ -214,7 +177,6 @@ color: #0ca678;
 font-size: 15px;
 }
 
-/* Floating Cart Button */
 .cart-btn{
 position:fixed;
 bottom:20px;
@@ -229,7 +191,6 @@ z-index: 1001;
 cursor: pointer;
 }
 
-/* Footer */
 footer{
 background:#0ca678;
 color:white;
@@ -258,68 +219,246 @@ font-size: 15px;
 </header>
 
 <div class="search">
-<input type="text" id="searchInput" placeholder="Search Products (e.g. Atta, Rice)...">
+<input type="text" id="searchInput" placeholder="सब्जी या किराना सामान सर्च करें...">
 </div>
 
-<div class="hero">
-<h2>Fresh Grocery Delivered</h2>
-<p>Fast Delivery • Best Quality • Cash on Delivery</p>
-</div>
-
-<div class="section-title">Categories</div>
-<div class="categories">
-<div class="category">Atta</div>
-<div class="category">Rice</div>
-<div class="category">Dal</div>
-<div class="category">Oil</div>
-<div class="category">Sugar</div>
-<div class="category">Salt</div>
-<div class="category">Spices</div>
-<div class="category">Tea</div>
-<div class="category">Snacks</div>
-</div>
-
-<div class="section-title">Popular Products</div>
+<div class="section-title">Vegetables (सब्जी)</div>
 <div class="products">
 
-<div class="card" data-name="ashirvaad atta">
-<img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=500">
-<h4>Ashirvaad Atta</h4>
-<div class="brand">5 Kg Pack</div>
-<div class="price">₹280</div>
-<div class="btn-container" id="btn-container-atta">
-  <button class="btn" onclick="handleInitialAdd('atta', 'Ashirvaad Atta', 280)">Add To Cart</button>
-</div>
-</div>
-
-<div class="card" data-name="india gate rice">
-<img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500">
-<h4>India Gate Rice</h4>
-<div class="brand">5 Kg Pack</div>
-<div class="price">₹450</div>
-<div class="btn-container" id="btn-container-rice">
-  <button class="btn" onclick="handleInitialAdd('rice', 'India Gate Rice', 450)">Add To Cart</button>
-</div>
+<div class="card" data-name="aloo आलू vegetables">
+  <h4>Aloo (आलू)</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹30</div>
+  <div class="btn-container" id="btn-container-aloo">
+    <button class="btn" onclick="handleInitialAdd('aloo', 'Aloo (आलू)', 30)">Add To Cart</button>
+  </div>
 </div>
 
-<div class="card" data-name="fortune oil">
-<img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500">
-<h4>Fortune Oil</h4>
-<div class="brand">1 Litre</div>
-<div class="price">₹170</div>
-<div class="btn-container" id="btn-container-oil">
-  <button class="btn" onclick="handleInitialAdd('oil', 'Fortune Oil', 170)">Add To Cart</button>
-</div>
+<div class="card" data-name="onion प्याज vegetables">
+  <h4>Onion (प्याज)</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹25</div>
+  <div class="btn-container" id="btn-container-onion">
+    <button class="btn" onclick="handleInitialAdd('onion', 'Onion (प्याज)', 25)">Add To Cart</button>
+  </div>
 </div>
 
-<div class="card" data-name="tata salt">
-<img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=500">
-<h4>Tata Salt</h4>
-<div class="brand">1 Kg</div>
-<div class="price">₹25</div>
-<div class="btn-container" id="btn-container-salt">
-  <button class="btn" onclick="handleInitialAdd('salt', 'Tata Salt', 25)">Add To Cart</button>
+<div class="card" data-name="lauki लौकी vegetables">
+  <h4>Lauki (लौकी)</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹30</div>
+  <div class="btn-container" id="btn-container-lauki">
+    <button class="btn" onclick="handleInitialAdd('lauki', 'Lauki (लौकी)', 30)">Add To Cart</button>
+  </div>
 </div>
+
+<div class="card" data-name="mirchi मिर्च vegetables">
+  <h4>Mirchi (मिर्च)</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹50</div>
+  <div class="btn-container" id="btn-container-mirchi">
+    <button class="btn" onclick="handleInitialAdd('mirchi', 'Mirchi (मिर्च)', 50)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="gobhi गोभी vegetables">
+  <h4>Gobhi (गोभी)</h4>
+  <div class="brand">1 नग Pack</div>
+  <div class="price">₹25</div>
+  <div class="btn-container" id="btn-container-gobhi">
+    <button class="btn" onclick="handleInitialAdd('gobhi', 'Gobhi (गोभी)', 25)">Add To Cart</button>
+  </div>
+</div>
+
+</div>
+
+<div class="section-title">Spices (मसाले)</div>
+<div class="products">
+
+<div class="card" data-name="sabji masala spices">
+  <h4>Sabji Masala</h4>
+  <div class="brand">Standard Pack</div>
+  <div class="price">₹65</div>
+  <div class="btn-container" id="btn-container-sabjimasala">
+    <button class="btn" onclick="handleInitialAdd('sabjimasala', 'Sabji Masala', 65)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="chicken masala spices">
+  <h4>Chicken Masala</h4>
+  <div class="brand">Standard Pack</div>
+  <div class="price">₹85</div>
+  <div class="btn-container" id="btn-container-chickenmasala">
+    <button class="btn" onclick="handleInitialAdd('chickenmasala', 'Chicken Masala', 85)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="tata salt spices नमक">
+  <h4>Tata Salt</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹35</div>
+  <div class="btn-container" id="btn-container-tatasalt">
+    <button class="btn" onclick="handleInitialAdd('tatasalt', 'Tata Salt', 35)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="haldi हल्दी spices">
+  <h4>Haldi (हल्दी)</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹200</div>
+  <div class="btn-container" id="btn-container-haldi">
+    <button class="btn" onclick="handleInitialAdd('haldi', 'Haldi (हल्दी)', 200)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="jeera जीरा spices">
+  <h4>Jeera (जीरा)</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹350</div>
+  <div class="btn-container" id="btn-container-jeera">
+    <button class="btn" onclick="handleInitialAdd('jeera', 'Jeera (जीरा)', 350)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="laal mirch spices">
+  <h4>Laal Mirch</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹100</div>
+  <div class="btn-container" id="btn-container-laalmirch">
+    <button class="btn" onclick="handleInitialAdd('laalmirch', 'Laal Mirch', 100)">Add To Cart</button>
+  </div>
+</div>
+
+</div>
+
+<div class="section-title">Chay (चाय)</div>
+<div class="products">
+
+<div class="card" data-name="marvel chay चाय">
+  <h4>Marvel Tea</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹380</div>
+  <div class="btn-container" id="btn-container-marvel">
+    <button class="btn" onclick="handleInitialAdd('marvel', 'Marvel Tea 1kg', 380)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="gudrick chay चाय">
+  <h4>Gudrick Tea</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹360</div>
+  <div class="btn-container" id="btn-container-gudrick">
+    <button class="btn" onclick="handleInitialAdd('gudrick', 'Gudrick Tea 1kg', 360)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="red level chay चाय">
+  <h4>Red Label Tea</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹450</div>
+  <div class="btn-container" id="btn-container-redlabel">
+    <button class="btn" onclick="handleInitialAdd('redlabel', 'Red Label Tea 1kg', 450)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="taaj chay चाय">
+  <h4>Taj Mahal Tea</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹500</div>
+  <div class="btn-container" id="btn-container-taaj">
+    <button class="btn" onclick="handleInitialAdd('taaj', 'Taj Mahal Tea 1kg', 500)">Add To Cart</button>
+  </div>
+</div>
+
+</div>
+
+<div class="section-title">Grocery Kirana (किराना सामान)</div>
+<div class="products">
+
+<div class="card" data-name="sugar शक्कर kirana">
+  <h4>Sugar (शक्कर)</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹50</div>
+  <div class="btn-container" id="btn-container-sugar">
+    <button class="btn" onclick="handleInitialAdd('sugar', 'Sugar (शक्कर)', 50)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="jaggery गुड़ kirana">
+  <h4>Gud (गुड़)</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹55</div>
+  <div class="btn-container" id="btn-container-gud">
+    <button class="btn" onclick="handleInitialAdd('gud', 'Gud (गुड़)', 55)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="nirmal detergent kirana">
+  <h4>Nirmal Powder</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹180</div>
+  <div class="btn-container" id="btn-container-nirmal">
+    <button class="btn" onclick="handleInitialAdd('nirmal', 'Nirmal 1kg', 180)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="surf excel kirana">
+  <h4>Surf Excel</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹250</div>
+  <div class="btn-container" id="btn-container-surf">
+    <button class="btn" onclick="handleInitialAdd('surf', 'Surf Excel 1kg', 250)">Add To Cart</button>
+  </div>
+</div>
+
+</div>
+
+<div class="section-title">Oil (तेल)</div>
+<div class="products">
+
+<div class="card" data-name="sarso mustard oil">
+  <h4>Sarso Oil</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹250</div>
+  <div class="btn-container" id="btn-container-sarso">
+    <button class="btn" onclick="handleInitialAdd('sarso', 'Sarso Oil 1kg', 250)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="refined oil रिफाइंड">
+  <h4>Refined Oil</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹200</div>
+  <div class="btn-container" id="btn-container-refined">
+    <button class="btn" onclick="handleInitialAdd('refined', 'Refined Oil 1kg', 200)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="coconut नारियल oil">
+  <h4>Nariyal Oil</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹400</div>
+  <div class="btn-container" id="btn-container-nariyal">
+    <button class="btn" onclick="handleInitialAdd('nariyal', 'Nariyal Oil 1kg', 400)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="chameli jasmine oil">
+  <h4>Chameli Oil</h4>
+  <div class="brand">200 Gm Pack</div>
+  <div class="price">₹150</div>
+  <div class="btn-container" id="btn-container-chameli">
+    <button class="btn" onclick="handleInitialAdd('chameli', 'Chameli Oil 200g', 150)">Add To Cart</button>
+  </div>
+</div>
+
+<div class="card" data-name="dalda vanaspati oil">
+  <h4>Dalda</h4>
+  <div class="brand">1 Kg Pack</div>
+  <div class="price">₹180</div>
+  <div class="btn-container" id="btn-container-dalda">
+    <button class="btn" onclick="handleInitialAdd('dalda', 'Dalda 1kg', 180)">Add To Cart</button>
+  </div>
 </div>
 
 </div>
@@ -346,11 +485,9 @@ WhatsApp Par Order Bheinjen 💬
 <p>📍 Address: Main Market, Aapka Shahar</p>
 </footer>
 
-
 <script>
 let cart = [];
 
-// Add Product to Array
 function addToCart(name, price){
     const item = cart.find(p => p.name === name);
     if(item){
@@ -361,7 +498,6 @@ function addToCart(name, price){
     updateCart();
 }
 
-// Remove Product from Array
 function removeFromCart(name){
     const item = cart.find(p => p.name === name);
     if(!item) return;
@@ -373,7 +509,6 @@ function removeFromCart(name){
     updateCart();
 }
 
-// Update Cart Count and Values
 function updateCart(){
     let total = 0;
     let count = 0;
@@ -390,7 +525,6 @@ function updateCart(){
     if(cartTotal) cartTotal.innerText = total;
 }
 
-// Show Alert Popup for Cart Items
 function showCart(){
     if(cart.length === 0){
         alert("Cart Empty hai bhai!");
@@ -403,7 +537,6 @@ function showCart(){
     alert(text);
 }
 
-// Plus-Minus UI Controllers
 function handleInitialAdd(id, name, price) {
     addToCart(name, price);
     renderQtySelector(id, name, price, 1);
@@ -441,7 +574,7 @@ function handleDecrease(id, name, price) {
     }
 }
 
-// Live Search Filter Logic
+// Live Filter Loop
 document.getElementById("searchInput").addEventListener("input", (e) => {
     const searchValue = e.target.value.toLowerCase().trim();
     const productCards = document.querySelectorAll(".products .card");
@@ -456,19 +589,18 @@ document.getElementById("searchInput").addEventListener("input", (e) => {
     });
 });
 
-// Send Order to WhatsApp Function
 function placeOrder(){
     const name = document.getElementById("custName").value.trim();
     const mobile = document.getElementById("custMobile").value.trim();
     const address = document.getElementById("custAddress").value.trim();
 
     if(name === "" || mobile === "" || address === ""){
-        alert("Kripya apni saari details (Naam, Mobile, Address) bharein!");
+        alert("Kripya apni saari details bharein!");
         return;
     }
 
     if(cart.length === 0){
-        alert("Aapka cart khali hai! Pehle samaan add karein.");
+        alert("Aapka cart khali hai!");
         return;
     }
 
@@ -476,7 +608,7 @@ function placeOrder(){
     let total = 0;
 
     cart.forEach((item, index) => {
-        orderItems += (index + 1) + ". " + item.name + " (" + item.qty + " pack) - ₹" + (item.price * item.qty) + "\n";
+        orderItems += (index + 1) + ". " + item.name + " (" + item.qty + " Item) - ₹" + (item.price * item.qty) + "\n";
         total += item.price * item.qty;
     });
 
@@ -491,7 +623,7 @@ function placeOrder(){
         "*Total Bill Amount: ₹" + total + "*\n\n" +
         "💵 *Payment Mode:* Cash on Delivery";
 
-    // 🔴 APNA REAL WHATSAPP NUMBER YAHAN DALEIN (Country Code 91 ke sath)
+    // 🔴 APNA REAL WHATSAPP NUMBER STYLE ME UPDATE KAREIN (91 ke sath)
     const whatsappNumber = "919876543210"; 
 
     window.open(
