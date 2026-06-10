@@ -2,172 +2,120 @@ let cart = [];
 
 // Add Product
 function addToCart(name, price){
+    const item = cart.find(p => p.name === name);
 
-const item = cart.find(p => p.name === name);
-
-if(item){
-item.qty++;
+    if(item){
+        item.qty++;
+    }
+    else{
+        cart.push({
+            name: name,
+            price: price,
+            qty: 1
+        });
+    }
+    updateCart();
+    alert(name + " Cart me add ho gaya!"); // Grahak ko pata chale isliye alert
 }
-else{
-cart.push({
-name: name,
-price: price,
-qty: 1
-});
-}
 
-updateCart();
-}
-
-// Remove Product
+// Remove Product (Agar aage buttons lagao toh ye kaam aayega)
 function removeFromCart(name){
+    const item = cart.find(p => p.name === name);
 
-const item = cart.find(p => p.name === name);
+    if(!item) return;
 
-if(!item) return;
+    item.qty--;
 
-item.qty--;
+    if(item.qty <= 0){
+        cart = cart.filter(p => p.name !== name);
+    }
 
-if(item.qty <= 0){
-cart = cart.filter(p => p.name !== name);
+    updateCart();
 }
 
-updateCart();
-}
-
-// Update Cart
+// Update Cart (Total amount aur count screen par dikhane ke liye)
 function updateCart(){
+    let total = 0;
+    let count = 0;
 
-let total = 0;
-let count = 0;
+    cart.forEach(item => {
+        total += item.price * item.qty;
+        count += item.qty;
+    });
 
-cart.forEach(item => {
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
 
-total += item.price * item.qty;
-count += item.qty;
+    if(cartCount){
+        cartCount.innerText = count;
+    }
 
-});
-
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-
-if(cartCount){
-cartCount.innerText = count;
+    if(cartTotal){
+        cartTotal.innerText = total;
+    }
 }
 
-if(cartTotal){
-cartTotal.innerText = total;
-}
-
-}
-
-// Show Cart
+// Show Cart (Cart Button par click karne par popup dikhega)
 function showCart(){
+    if(cart.length === 0){
+        alert("Cart Empty hai bhai!");
+        return;
+    }
 
-if(cart.length === 0){
-alert("Cart Empty");
-return;
+    let text = "🛒 Cart Items:\n\n";
+    cart.forEach(item => {
+        text += "• " + item.name + " x " + item.qty + " = ₹" + (item.price * item.qty) + "\n";
+    });
+
+    alert(text);
 }
 
-let text = "Cart Items:\n\n";
-
-cart.forEach(item => {
-
-text += item.name +
-" x " +
-item.qty +
-"\n";
-
-});
-
-alert(text);
-
-}
-
-// Place Order
+// Place Order (Asli WhatsApp Trigger yahan hai)
 function placeOrder(){
+    const name = document.getElementById("custName").value.trim();
+    const mobile = document.getElementById("custMobile").value.trim();
+    const address = document.getElementById("custAddress").value.trim();
 
-const name =
-document.getElementById("custName").value;
+    if(name === "" || mobile === "" || address === ""){
+        alert("Kripya apni saari details (Naam, Mobile, Address) bharein!");
+        return;
+    }
 
-const mobile =
-document.getElementById("custMobile").value;
+    if(cart.length === 0){
+        alert("Aapka cart khali hai! Pehle samaan add karein.");
+        return;
+    }
 
-const address =
-document.getElementById("custAddress").value;
+    let orderItems = "";
+    let total = 0;
 
-if(
-name === "" ||
-mobile === "" ||
-address === ""
-){
-alert("Please fill all details");
-return;
-}
+    // Samaan ki list ready karna
+    cart.forEach((item, index) => {
+        orderItems += (index + 1) + ". " + item.name + " (" + item.qty + " pack) - ₹" + (item.price * item.qty) + "\n";
+        total += item.price * item.qty;
+    });
 
-if(cart.length === 0){
-alert("Cart Empty");
-return;
-}
+    // WhatsApp par jaane wala message format (Bold text ke liye * use kiya hai)
+    let message = 
+        "*नया ऑर्डर - BIPIN KIRANA STORE*\n\n" +
+        "*Grahak Ki Details:*\n" +
+        "📝 Naam: " + name + "\n" +
+        "📞 Mobile: " + mobile + "\n" +
+        "📍 Pata: " + address + "\n\n" +
+        "*Samaan Ki List:*\n" + 
+        orderItems + "\n" +
+        "*Total Bill Amount: ₹" + total + "*\n\n" +
+        "💵 *Payment Mode:* Cash on Delivery";
 
-let orderItems = "";
-let total = 0;
+    // 🔴 APNA REAL WHATSAPP NUMBER YAHAN DALEIN (Country code 91 ke sath, bina '+' ke)
+    const whatsappNumber = "917049657681"; 
 
-cart.forEach(item => {
-
-orderItems +=
-item.name +
-" x " +
-item.qty +
-"\n";
-
-total +=
-item.price *
-item.qty;
-
-});
-
-let message =
-
-"New Order - Bipin Kirana Store\n\n" +
-
-"Customer Name: " +
-name +
-"\n\n" +
-
-"Mobile: " +
-mobile +
-"\n\n" +
-
-"Address: " +
-address +
-"\n\n" +
-
-"Ordered Items:\n" +
-orderItems +
-"\n" +
-
-"Total Amount: ₹" +
-total +
-"\n\n" +
-
-"Payment: Cash on Delivery";
-
-alert(message);
-
-/*
-
-WhatsApp Later
-
-const whatsappNumber = "";
-
-window.open(
-"https://wa.me/" +
-whatsappNumber +
-"?text=" +
-encodeURIComponent(message)
-);
-
-*/
-
+    // WhatsApp link open karne ka system
+    window.open(
+        "https://api.whatsapp.com/send?phone=" + 
+        whatsappNumber + 
+        "&text=" + 
+        encodeURIComponent(message),
+        "_blank"
+    );
 }
