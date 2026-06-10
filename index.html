@@ -6,16 +6,15 @@
 <title>Bipin Kirana Store</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
-<script src="script.js"></script>
 body{
 background:#f5f7f5;
+padding-bottom: 80px; /* Cart button ke liye space */
 }
 
 header{
@@ -81,6 +80,9 @@ padding:15px;
 border-radius:15px;
 text-align:center;
 box-shadow:0 2px 8px rgba(0,0,0,.08);
+font-size: 14px;
+font-weight: bold;
+color: #333;
 }
 
 .products{
@@ -95,6 +97,9 @@ background:white;
 border-radius:18px;
 padding:12px;
 box-shadow:0 2px 8px rgba(0,0,0,.08);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 }
 
 .card img{
@@ -124,28 +129,38 @@ width:100%;
 padding:10px;
 border-radius:10px;
 font-weight:bold;
+cursor: pointer;
+}
+
+.btn:active {
+background: #0b946a;
 }
 
 .cart-btn{
 position:fixed;
 bottom:20px;
 right:20px;
-background:#0ca678;
+background:#e8590c; /* Orange color taaki alag se chamke */
 color:white;
 padding:15px 20px;
 border-radius:50px;
 font-weight:bold;
 box-shadow:0 4px 15px rgba(0,0,0,.2);
+z-index: 1001;
+cursor: pointer;
 }
 
 footer{
 background:#0ca678;
 color:white;
-padding:20px;
+padding:30px 20px;
 margin-top:30px;
 text-align:center;
 }
-
+footer p {
+margin: 8px 0;
+font-size: 15px;
+}
 </style>
 
 </head>
@@ -194,9 +209,7 @@ Popular Products
 <h4>Ashirvaad Atta</h4>
 <div class="brand">5 Kg Pack</div>
 <div class="price">₹280</div>
-<button class="btn" onclick="addToCart('Ashirvaad Atta',280)">+</button>
-
-<button class="btn" onclick="removeFromCart('Ashirvaad Atta')">-</button>
+<button class="btn" onclick="addToCart('Ashirvaad Atta', 280)">Add To Cart</button>
 </div>
 
 <div class="card">
@@ -204,7 +217,7 @@ Popular Products
 <h4>India Gate Rice</h4>
 <div class="brand">5 Kg Pack</div>
 <div class="price">₹450</div>
-<button class="btn">Add To Cart</button>
+<button class="btn" onclick="addToCart('India Gate Rice', 450)">Add To Cart</button>
 </div>
 
 <div class="card">
@@ -212,7 +225,7 @@ Popular Products
 <h4>Fortune Oil</h4>
 <div class="brand">1 Litre</div>
 <div class="price">₹170</div>
-<button class="btn">Add To Cart</button>
+<button class="btn" onclick="addToCart('Fortune Oil', 170)">Add To Cart</button>
 </div>
 
 <div class="card">
@@ -220,41 +233,34 @@ Popular Products
 <h4>Tata Salt</h4>
 <div class="brand">1 Kg</div>
 <div class="price">₹25</div>
-<button class="btn">Add To Cart</button>
+<button class="btn" onclick="addToCart('Tata Salt', 25)">Add To Cart</button>
 </div>
 
 </div>
 
-<div class="cart-btn" onclick="showCart()">
-🛒 Cart (<span id="cartCount">0</span>)
-₹<span id="cartTotal">0</span>
+<div class="cart-btn">
+🛒 Cart (<span id="cartCount">0</span>) - ₹<span id="cartTotal">0</span>
 </div>
+
 <div style="background:white;padding:20px;margin:15px;border-radius:15px;box-shadow:0 2px 8px rgba(0,0,0,.1);">
+<h2>Checkout Details</h2>
 
-<h2>Checkout</h2>
+<input id="custName" type="text" placeholder="Grahak Ka Naam" style="width:100%;padding:12px;margin:8px 0; border: 1px solid #ddd; border-radius: 8px;">
+<input id="custMobile" type="tel" placeholder="Mobile Number" style="width:100%;padding:12px;margin:8px 0; border: 1px solid #ddd; border-radius: 8px;">
+<textarea id="custAddress" placeholder="Poora Pata (Address)" style="width:100%;padding:12px;margin:8px 0;height:100px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
 
-<input id="custName" type="text" placeholder="Customer Name"
-style="width:100%;padding:12px;margin:8px 0;">
-
-<input id="custMobile" type="tel" placeholder="Mobile Number"
-style="width:100%;padding:12px;margin:8px 0;">
-
-<textarea id="custAddress"
-placeholder="Full Address"
-style="width:100%;padding:12px;margin:8px 0;height:100px;">
-</textarea>
-
-<button class="btn" onclick="placeOrder()">
-Proceed To Order
+<button class="btn" style="background: #e8590c; padding: 15px; font-size: 16px;" onclick="placeOrder()">
+WhatsApp Par Order Bheinjen 💬
 </button>
-
 </div>
+
 <footer>
 <h3>Bipin Kirana Store</h3>
-<p>📞 Contact Number</p>
-<p>💬 WhatsApp Number</p>
-<p>📍 Store Address</p>
+<p>📞 Phone: +91 9876543210</p>
+<p>💬 WhatsApp: +91 9876543210</p>
+<p>📍 Address: Main Market, Aapka Shahar</p>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
