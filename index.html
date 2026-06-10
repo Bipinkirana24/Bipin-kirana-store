@@ -14,29 +14,56 @@ font-family:Arial,sans-serif;
 }
 body{
 background:#f5f7f5;
-padding-bottom: 80px; /* Cart button ke liye space */
+padding-bottom: 80px; /* Cart button ke liye neche space */
 }
 
-header{
-background:#0ca678;
-color:white;
-padding:20px;
-text-align:center;
-position:sticky;
-top:0;
-z-index:1000;
+/* Header & Logo Styling */
+header {
+background: #0ca678;
+color: white;
+padding: 12px 15px;
+position: sticky;
+top: 0;
+z-index: 1000;
 }
 
-.tagline{
-font-size:14px;
-margin-top:5px;
+.logo-container {
+display: flex;
+align-items: center;
+gap: 12px;
 }
 
+.header-logo {
+width: 55px;
+height: 55px;
+object-fit: cover;
+border-radius: 50%;
+border: 2px solid white;
+background: white;
+}
+
+.header-text {
+display: flex;
+flex-direction: column;
+text-align: left;
+}
+
+header h1 {
+font-size: 20px;
+}
+
+.tagline {
+font-size: 12px;
+opacity: 0.9;
+margin-top: 2px;
+}
+
+/* Search Bar */
 .search{
 padding:15px;
 background:white;
 position:sticky;
-top:82px;
+top:79px;
 z-index:999;
 }
 
@@ -46,8 +73,10 @@ padding:14px;
 border-radius:15px;
 border:1px solid #ddd;
 font-size:16px;
+outline: none;
 }
 
+/* Hero Banner */
 .hero{
 margin:15px;
 background:linear-gradient(135deg,#12b886,#38d9a9);
@@ -67,6 +96,7 @@ font-size:20px;
 font-weight:bold;
 }
 
+/* Categories */
 .categories{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -85,6 +115,7 @@ font-weight: bold;
 color: #333;
 }
 
+/* Products Grid */
 .products{
 padding:15px;
 display:grid;
@@ -121,26 +152,74 @@ color:#0ca678;
 margin:8px 0;
 }
 
+/* Add To Cart & Stylish Plus-Minus Buttons */
+.btn-container {
+width: 100%;
+height: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
 .btn{
 background:#0ca678;
 color:white;
 border:none;
 width:100%;
-padding:10px;
+height: 100%;
 border-radius:10px;
 font-weight:bold;
 cursor: pointer;
+font-size: 14px;
+transition: all 0.2s;
 }
 
 .btn:active {
 background: #0b946a;
 }
 
+.qty-selector {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+height: 100%;
+background: #e6f7f2;
+border: 1px solid #0ca678;
+border-radius: 10px;
+overflow: hidden;
+}
+
+.qty-btn {
+background: none;
+border: none;
+color: #0ca678;
+font-size: 18px;
+font-weight: bold;
+width: 35px;
+height: 100%;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.qty-btn:active {
+background: #c3eedf;
+}
+
+.qty-count {
+font-weight: bold;
+color: #0ca678;
+font-size: 15px;
+}
+
+/* Floating Cart Button */
 .cart-btn{
 position:fixed;
 bottom:20px;
 right:20px;
-background:#e8590c; /* Orange color taaki alag se chamke */
+background:#e8590c; 
 color:white;
 padding:15px 20px;
 border-radius:50px;
@@ -150,6 +229,7 @@ z-index: 1001;
 cursor: pointer;
 }
 
+/* Footer */
 footer{
 background:#0ca678;
 color:white;
@@ -157,6 +237,7 @@ padding:30px 20px;
 margin-top:30px;
 text-align:center;
 }
+
 footer p {
 margin: 8px 0;
 font-size: 15px;
@@ -167,14 +248,17 @@ font-size: 15px;
 <body>
 
 <header>
+<div class="logo-container">
+<img src="https://i.imgur.com/vHInIsk.png" alt="Bipin Kirana Store Logo" class="header-logo">
+<div class="header-text">
 <h1>Bipin Kirana Store</h1>
-<div class="tagline">
-घर बैठे किराना मंगाइए - Cash on Delivery
+<div class="tagline">घर बैठे किराना मंगाइए - Cash on Delivery</div>
+</div>
 </div>
 </header>
 
 <div class="search">
-<input type="text" placeholder="Search Products...">
+<input type="text" id="searchInput" placeholder="Search Products (e.g. Atta, Rice)...">
 </div>
 
 <div class="hero">
@@ -182,10 +266,7 @@ font-size: 15px;
 <p>Fast Delivery • Best Quality • Cash on Delivery</p>
 </div>
 
-<div class="section-title">
-Categories
-</div>
-
+<div class="section-title">Categories</div>
 <div class="categories">
 <div class="category">Atta</div>
 <div class="category">Rice</div>
@@ -198,58 +279,62 @@ Categories
 <div class="category">Snacks</div>
 </div>
 
-<div class="section-title">
-Popular Products
-</div>
-
+<div class="section-title">Popular Products</div>
 <div class="products">
 
-<div class="card">
+<div class="card" data-name="ashirvaad atta">
 <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=500">
 <h4>Ashirvaad Atta</h4>
 <div class="brand">5 Kg Pack</div>
 <div class="price">₹280</div>
-<button class="btn" onclick="addToCart('Ashirvaad Atta', 280)">Add To Cart</button>
+<div class="btn-container" id="btn-container-atta">
+  <button class="btn" onclick="handleInitialAdd('atta', 'Ashirvaad Atta', 280)">Add To Cart</button>
+</div>
 </div>
 
-<div class="card">
+<div class="card" data-name="india gate rice">
 <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500">
 <h4>India Gate Rice</h4>
 <div class="brand">5 Kg Pack</div>
 <div class="price">₹450</div>
-<button class="btn" onclick="addToCart('India Gate Rice', 450)">Add To Cart</button>
+<div class="btn-container" id="btn-container-rice">
+  <button class="btn" onclick="handleInitialAdd('rice', 'India Gate Rice', 450)">Add To Cart</button>
+</div>
 </div>
 
-<div class="card">
+<div class="card" data-name="fortune oil">
 <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500">
 <h4>Fortune Oil</h4>
 <div class="brand">1 Litre</div>
 <div class="price">₹170</div>
-<button class="btn" onclick="addToCart('Fortune Oil', 170)">Add To Cart</button>
+<div class="btn-container" id="btn-container-oil">
+  <button class="btn" onclick="handleInitialAdd('oil', 'Fortune Oil', 170)">Add To Cart</button>
+</div>
 </div>
 
-<div class="card">
+<div class="card" data-name="tata salt">
 <img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=500">
 <h4>Tata Salt</h4>
 <div class="brand">1 Kg</div>
 <div class="price">₹25</div>
-<button class="btn" onclick="addToCart('Tata Salt', 25)">Add To Cart</button>
+<div class="btn-container" id="btn-container-salt">
+  <button class="btn" onclick="handleInitialAdd('salt', 'Tata Salt', 25)">Add To Cart</button>
+</div>
 </div>
 
 </div>
 
-<div class="cart-btn">
+<div class="cart-btn" onclick="showCart()">
 🛒 Cart (<span id="cartCount">0</span>) - ₹<span id="cartTotal">0</span>
 </div>
 
 <div style="background:white;padding:20px;margin:15px;border-radius:15px;box-shadow:0 2px 8px rgba(0,0,0,.1);">
 <h2>Checkout Details</h2>
-
 <input id="custName" type="text" placeholder="Grahak Ka Naam" style="width:100%;padding:12px;margin:8px 0; border: 1px solid #ddd; border-radius: 8px;">
 <input id="custMobile" type="tel" placeholder="Mobile Number" style="width:100%;padding:12px;margin:8px 0; border: 1px solid #ddd; border-radius: 8px;">
 <textarea id="custAddress" placeholder="Poora Pata (Address)" style="width:100%;padding:12px;margin:8px 0;height:100px; border: 1px solid #ddd; border-radius: 8px;"></textarea>
 
-<button class="btn" style="background: #e8590c; padding: 15px; font-size: 16px;" onclick="placeOrder()">
+<button class="btn" style="background: #e8590c; padding: 15px; font-size: 16px; height: auto;" onclick="placeOrder()">
 WhatsApp Par Order Bheinjen 💬
 </button>
 </div>
@@ -261,6 +346,159 @@ WhatsApp Par Order Bheinjen 💬
 <p>📍 Address: Main Market, Aapka Shahar</p>
 </footer>
 
-<script src="script.js"></script>
+
+<script>
+let cart = [];
+
+// Add Product to Array
+function addToCart(name, price){
+    const item = cart.find(p => p.name === name);
+    if(item){
+        item.qty++;
+    } else {
+        cart.push({ name: name, price: price, qty: 1 });
+    }
+    updateCart();
+}
+
+// Remove Product from Array
+function removeFromCart(name){
+    const item = cart.find(p => p.name === name);
+    if(!item) return;
+
+    item.qty--;
+    if(item.qty <= 0){
+        cart = cart.filter(p => p.name !== name);
+    }
+    updateCart();
+}
+
+// Update Cart Count and Values
+function updateCart(){
+    let total = 0;
+    let count = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.qty;
+        count += item.qty;
+    });
+
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+
+    if(cartCount) cartCount.innerText = count;
+    if(cartTotal) cartTotal.innerText = total;
+}
+
+// Show Alert Popup for Cart Items
+function showCart(){
+    if(cart.length === 0){
+        alert("Cart Empty hai bhai!");
+        return;
+    }
+    let text = "🛒 Cart Items:\n\n";
+    cart.forEach(item => {
+        text += "• " + item.name + " x " + item.qty + " = ₹" + (item.price * item.qty) + "\n";
+    });
+    alert(text);
+}
+
+// Plus-Minus UI Controllers
+function handleInitialAdd(id, name, price) {
+    addToCart(name, price);
+    renderQtySelector(id, name, price, 1);
+}
+
+function renderQtySelector(id, name, price, currentQty) {
+    const container = document.getElementById('btn-container-' + id);
+    if(!container) return;
+    
+    container.innerHTML = `
+        <div class="qty-selector">
+            <button class="qty-btn" onclick="handleDecrease('${id}', '${name}', ${price})">−</button>
+            <span class="qty-count" id="qty-count-${id}">${currentQty}</span>
+            <button class="qty-btn" onclick="handleIncrease('${id}', '${name}', ${price})">+</button>
+        </div>
+    `;
+}
+
+function handleIncrease(id, name, price) {
+    addToCart(name, price);
+    const item = cart.find(p => p.name === name);
+    if(item) {
+        document.getElementById('qty-count-' + id).innerText = item.qty;
+    }
+}
+
+function handleDecrease(id, name, price) {
+    removeFromCart(name);
+    const item = cart.find(p => p.name === name);
+    if(item) {
+        document.getElementById('qty-count-' + id).innerText = item.qty;
+    } else {
+        const container = document.getElementById('btn-container-' + id);
+        container.innerHTML = `<button class="btn" onclick="handleInitialAdd('${id}', '${name}', ${price})">Add To Cart</button>`;
+    }
+}
+
+// Live Search Filter Logic
+document.getElementById("searchInput").addEventListener("input", (e) => {
+    const searchValue = e.target.value.toLowerCase().trim();
+    const productCards = document.querySelectorAll(".products .card");
+
+    productCards.forEach(card => {
+        const productName = card.getAttribute("data-name");
+        if (productName.includes(searchValue)) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+
+// Send Order to WhatsApp Function
+function placeOrder(){
+    const name = document.getElementById("custName").value.trim();
+    const mobile = document.getElementById("custMobile").value.trim();
+    const address = document.getElementById("custAddress").value.trim();
+
+    if(name === "" || mobile === "" || address === ""){
+        alert("Kripya apni saari details (Naam, Mobile, Address) bharein!");
+        return;
+    }
+
+    if(cart.length === 0){
+        alert("Aapka cart khali hai! Pehle samaan add karein.");
+        return;
+    }
+
+    let orderItems = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        orderItems += (index + 1) + ". " + item.name + " (" + item.qty + " pack) - ₹" + (item.price * item.qty) + "\n";
+        total += item.price * item.qty;
+    });
+
+    let message = 
+        "*नया ऑर्डर - BIPIN KIRANA STORE*\n\n" +
+        "*Grahak Ki Details:*\n" +
+        "📝 Naam: " + name + "\n" +
+        "📞 Mobile: " + mobile + "\n" +
+        "📍 Pata: " + address + "\n\n" +
+        "*Samaan Ki List:*\n" + 
+        orderItems + "\n" +
+        "*Total Bill Amount: ₹" + total + "*\n\n" +
+        "💵 *Payment Mode:* Cash on Delivery";
+
+    // 🔴 APNA REAL WHATSAPP NUMBER YAHAN DALEIN (Country Code 91 ke sath)
+    const whatsappNumber = "919876543210"; 
+
+    window.open(
+        "https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + encodeURIComponent(message),
+        "_blank"
+    );
+}
+</script>
 </body>
 </html>
